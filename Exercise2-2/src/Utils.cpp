@@ -175,7 +175,7 @@ bool ImportCell2Ds(PolygonalMesh& mesh)
 // lavoro su matrice spigoli
           mesh.M2D_spigoli.reserve(mesh.Dim2D);    
           vector<int> linea2;
-          linea2.reserve(n_vertici_spigoli);
+          linea2.resize(n_vertici_spigoli);
           for (unsigned int j = 0; j < n_vertici_spigoli ; j++)
           {
             convertitore >> linea2[j];
@@ -237,7 +237,7 @@ bool controllo_area(PolygonalMesh& mesh){
             }
         Area = abs(Area)/2;
         double epsilon = 1e-8; // soglia di tolleranza
-        if (Area < epsilon)
+        if (Area < epsilon*epsilon)
         {
         return false;
         }
